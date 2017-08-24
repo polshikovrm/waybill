@@ -1,0 +1,17 @@
+version: '2'
+services:
+  php:
+    build: .
+    environment:
+      - PHP_USER_ID=82
+      - GITHUB_API_TOKEN=${GITHUB_API_TOKEN}
+    volumes:
+      - ./composer.json:/app/composer.json
+      - ./composer.lock:/app/composer.lock
+      - ./vendor:/app/vendor
+      - ./src:/app/src
+      - ./web:/app/web
+      - ./tests:/app/tests
+      - ./codeception.yml:/app/codeception.yml
+    ports:
+      - 20080:80

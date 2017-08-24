@@ -1,0 +1,15 @@
+sudo: required
+
+language: php
+
+services:
+  - docker
+
+before_install:
+  - cp src/app.env-dist src/app.env
+  - cp tests/.env-dist tests/.env
+  - composer install --prefer-dist
+
+script:
+  - cd tests
+  - docker-compose run forrest run
